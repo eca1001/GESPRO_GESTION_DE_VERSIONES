@@ -3,7 +3,7 @@ Aprendizaje de la gestión de tareas mediante la simulación de un proceso Scrum
 
 1. [Camarero Alonso, Enrique](https://github.com/eca1001)
 
-[Franco Peciña, Natalia](https://github.com/natalia295)
+2. [Franco Peciña, Natalia](https://github.com/natalia295)
 
 [Fuente Robles, Alberto](https://github.com/alberto-fuente)
 
