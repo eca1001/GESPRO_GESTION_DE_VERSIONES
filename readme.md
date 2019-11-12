@@ -7,5 +7,5 @@ Aprendizaje de la gestión de tareas mediante la simulación de un proceso Scrum
 
 [Fuente Robles, Alberto](https://github.com/alberto-fuente)
 
-[Piñero Gútiez, Diego](https://github.com/dpg1002)
+4. [Piñero Gútiez, Diego](https://github.com/dpg1002)
 
