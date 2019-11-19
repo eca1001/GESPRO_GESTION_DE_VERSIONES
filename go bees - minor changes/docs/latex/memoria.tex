@@ -1,0 +1,543 @@
+\documentclass[a4paper,11pt,oneside]{memoir}
+
+% Castellano
+\usepackage[spanish,es-tabla]{babel}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+\usepackage{placeins}
+\usepackage{float}
+
+\RequirePackage{booktabs}
+\RequirePackage[table]{xcolor}
+\RequirePackage{xtab}
+\RequirePackage{multirow}
+
+% Multi-page tables using
+\usepackage{longtable}
+\usepackage{tabularx}
+
+% Cell with line break (e.g. \specialcell{Foo\\bar})
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
+
+% Mathematic font
+\usepackage{amsfonts}
+
+% Color
+
+% Bibliography management
+\usepackage[numbers,sort]{natbib}
+
+% Links
+\usepackage[colorlinks]{hyperref}
+\hypersetup{
+	colorlinks,
+	linkcolor={green!40!black},
+	citecolor={blue!50!black},
+	urlcolor={blue!80!black}
+}
+
+% Ecuaciones
+\usepackage{amsmath}
+
+% Rutas de fichero / paquete
+\newcommand{\ruta}[1]{{\sffamily #1}}
+
+% Párrafos
+\nonzeroparskip
+
+% Listas estrechas
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Imagenes
+\usepackage{graphicx}
+\newcommand{\imagen}[2]{
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.9\textwidth]{#1}
+		\caption{#2}\label{fig:#1}
+	\end{figure}
+	\FloatBarrier
+}
+
+\newcommand{\imagenflotante}[2]{
+	\begin{figure}%[!h]
+		\centering
+		\includegraphics[width=0.9\textwidth]{#1}
+		\caption{#2}\label{fig:#1}
+	\end{figure}
+}
+
+
+
+% El comando \figura nos permite insertar figuras comodamente, y utilizando
+% siempre el mismo formato. Los parametros son:
+% 1 -> Porcentaje del ancho de página que ocupará la figura (de 0 a 1)
+% 2 --> Fichero de la imagen
+% 3 --> Texto a pie de imagen
+% 4 --> Etiqueta (label) para referencias
+% 5 --> Opciones que queramos pasarle al \includegraphics
+% 6 --> Opciones de posicionamiento a pasarle a \begin{figure}
+\newcommand{\figuraConPosicion}[6]{%
+  \setlength{\anchoFloat}{#1\textwidth}%
+  \addtolength{\anchoFloat}{-4\fboxsep}%
+  \setlength{\anchoFigura}{\anchoFloat}%
+  \begin{figure}[#6]
+    \begin{center}%
+      \Ovalbox{%
+        \begin{minipage}{\anchoFloat}%
+          \begin{center}%
+            \includegraphics[width=\anchoFigura,#5]{#2}%
+            \caption{#3}%
+            \label{#4}%
+          \end{center}%
+        \end{minipage}
+      }%
+    \end{center}%
+  \end{figure}%
+}
+
+%
+% Comando para incluir imágenes en formato apaisado (sin marco).
+\newcommand{\figuraApaisadaSinMarco}[5]{%
+  \begin{figure}%
+    \begin{center}%
+    \includegraphics[angle=90,height=#1\textheight,#5]{#2}%
+    \caption{#3}%
+    \label{#4}%
+    \end{center}%
+  \end{figure}%
+}
+% Para las tablas
+\newcommand{\otoprule}{\midrule [\heavyrulewidth]}
+%
+% Nuevo comando para tablas pequeñas (menos de una página).
+\newcommand{\tablaSmall}[5]{%
+ \begin{table}[H]
+  \begin{center}
+   \rowcolors {2}{gray!35}{}
+   \begin{tabular}{#2}
+    \toprule
+    #4
+    \otoprule
+    #5
+    \bottomrule
+   \end{tabular}
+   \caption{#1}
+   \label{tabla:#3}
+  \end{center}
+ \end{table}
+}
+
+%
+% Nuevo comando para tablas pequeñas (menos de una página).
+\newcommand{\tablaSmallSinColores}[5]{%
+ \begin{table}[H]
+  \begin{center}
+   \begin{tabular}{#2}
+    \toprule
+    #4
+    \otoprule
+    #5
+    \bottomrule
+   \end{tabular}
+   \caption{#1}
+   \label{tabla:#3}
+  \end{center}
+ \end{table}
+}
+
+\newcommand{\tablaApaisadaSmall}[5]{%
+\begin{landscape}
+  \begin{table}
+   \begin{center}
+    \rowcolors {2}{gray!35}{}
+    \begin{tabular}{#2}
+     \toprule
+     #4
+     \otoprule
+     #5
+     \bottomrule
+    \end{tabular}
+    \caption{#1}
+    \label{tabla:#3}
+   \end{center}
+  \end{table}
+\end{landscape}
+}
+
+%
+% Nuevo comando para tablas grandes con cabecera y filas alternas coloreadas en gris.
+\newcommand{\tabla}[6]{%
+  \begin{center}
+    \tablefirsthead{
+      \toprule
+      #5
+      \otoprule
+    }
+    \tablehead{
+      \multicolumn{#3}{l}{\small\sl continúa desde la página anterior}\\
+      \toprule
+      #5
+      \otoprule
+    }
+    \tabletail{
+      \hline
+      \multicolumn{#3}{r}{\small\sl continúa en la página siguiente}\\
+    }
+    \tablelasttail{
+      \hline
+    }
+    \bottomcaption{#1}
+    \rowcolors {2}{gray!35}{}
+    \begin{xtabular}{#2}
+      #6
+      \bottomrule
+    \end{xtabular}
+    \label{tabla:#4}
+  \end{center}
+}
+
+%
+% Nuevo comando para tablas grandes con cabecera.
+\newcommand{\tablaSinColores}[6]{%
+  \begin{center}
+    \tablefirsthead{
+      \toprule
+      #5
+      \otoprule
+    }
+    \tablehead{
+      \multicolumn{#3}{l}{\small\sl continúa desde la página anterior}\\
+      \toprule
+      #5
+      \otoprule
+    }
+    \tabletail{
+      \hline
+      \multicolumn{#3}{r}{\small\sl continúa en la página siguiente}\\
+    }
+    \tablelasttail{
+      \hline
+    }
+    \bottomcaption{#1}
+    \begin{xtabular}{#2}
+      #6
+      \bottomrule
+    \end{xtabular}
+    \label{tabla:#4}
+  \end{center}
+}
+
+%
+% Nuevo comando para tablas grandes sin cabecera.
+\newcommand{\tablaSinCabecera}[5]{%
+  \begin{center}
+    \tablefirsthead{
+      \toprule
+    }
+    \tablehead{
+      \multicolumn{#3}{l}{\small\sl continúa desde la página anterior}\\
+      \hline
+    }
+    \tabletail{
+      \hline
+      \multicolumn{#3}{r}{\small\sl continúa en la página siguiente}\\
+    }
+    \tablelasttail{
+      \hline
+    }
+    \bottomcaption{#1}
+  \begin{xtabular}{#2}
+    #5
+   \bottomrule
+  \end{xtabular}
+  \label{tabla:#4}
+  \end{center}
+}
+
+
+
+\definecolor{cgoLight}{HTML}{EEEEEE}
+\definecolor{cgoExtralight}{HTML}{FFFFFF}
+
+%
+% Nuevo comando para tablas grandes sin cabecera.
+\newcommand{\tablaSinCabeceraConBandas}[5]{%
+  \begin{center}
+    \tablefirsthead{
+      \toprule
+    }
+    \tablehead{
+      \multicolumn{#3}{l}{\small\sl continúa desde la página anterior}\\
+      \hline
+    }
+    \tabletail{
+      \hline
+      \multicolumn{#3}{r}{\small\sl continúa en la página siguiente}\\
+    }
+    \tablelasttail{
+      \hline
+    }
+    \bottomcaption{#1}
+    \rowcolors[]{1}{cgoExtralight}{cgoLight}
+
+  \begin{xtabular}{#2}
+    #5
+   \bottomrule
+  \end{xtabular}
+  \label{tabla:#4}
+  \end{center}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\graphicspath{ {../img/} }
+
+% Capítulos
+\chapterstyle{bianchi}
+\newcommand{\capitulo}[2]{
+	\setcounter{chapter}{#1}
+	\setcounter{section}{0}
+	\chapter*{#2}
+	\addcontentsline{toc}{chapter}{#2}
+	\markboth{#2}{#2}
+}
+
+% Apéndices
+\renewcommand{\appendixname}{Apéndice}
+\renewcommand*\cftappendixname{\appendixname}
+
+\newcommand{\apendice}[1]{
+	%\renewcommand{\thechapter}{A}
+	\chapter{#1}
+}
+
+\renewcommand*\cftappendixname{\appendixname\ }
+
+% Formato de portada
+\makeatletter
+\usepackage{xcolor}
+\newcommand{\tutor}[1]{\def\@tutor{#1}}
+\newcommand{\course}[1]{\def\@course{#1}}
+\definecolor{cpardoBox}{HTML}{E6E6FF}
+\def\maketitle{
+  \null
+  \thispagestyle{empty}
+  % Cabecera ----------------
+\noindent\includegraphics[width=\textwidth]{cabecera}\vspace{1cm}%
+  \vfill
+  % Título proyecto y escudo informática ----------------
+  \colorbox{cpardoBox}{%
+    \begin{minipage}{.8\textwidth}
+      \vspace{.5cm}\Large
+      \begin{center}
+      \textbf{TFG del Grado en Ingeniería Informática}\vspace{.6cm}\\
+      \textbf{\LARGE\@title{}}
+      \end{center}
+      \vspace{.2cm}
+    \end{minipage}
+
+  }%
+  \hfill\begin{minipage}{.20\textwidth}
+    \includegraphics[width=\textwidth]{escudoInfor}
+  \end{minipage}
+  \vfill
+  % Datos de alumno, curso y tutores ------------------
+  \begin{center}%
+  {%
+    \noindent\LARGE
+    Presentado por \@author{}\\ 
+    en la Universidad de Burgos --- \@date{}\\
+    Tutores: \@tutor{}\\
+  }%
+  \end{center}%
+  \null
+  \cleardoublepage
+  }
+\makeatother
+
+\newcommand{\nombre}{David Miguel Lozano} %%% cambio de comando
+
+% Datos de portada
+\title{{\Huge GoBees}\\[0.5cm]Monitorización del estado de una colmena mediante la cámara de un smartphone.}
+\author{\nombre}
+\tutor{Dr. José Francisco Díez Pastor\\y Dr. Raúl Marticorena Sánchez}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+
+
+\newpage\null\thispagestyle{empty}\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+
+
+\noindent\includegraphics[width=\textwidth]{cabecera}\vspace{1cm}
+
+\noindent D. José Francisco Díez Pastor y D. Raúl Marticorena Sánchez, profesores del departamento de Ingeniería Civil, área de Lenguajes y Sistemas Informáticos.
+
+\noindent Exponen:
+
+\noindent Que el alumno D. \nombre, con DNI 71307412Y, ha realizado el Trabajo Final de Grado en Ingeniería Informática titulado ``GoBees - Monitorización del estado de una colmena mediante la cámara de un smartphone''. 
+
+\noindent Y que dicho trabajo ha sido realizado por el alumno bajo la dirección del que suscribe, en virtud de lo cual se autoriza su presentación y defensa.
+
+\begin{center} %\large
+En Burgos, {\large \today}
+\end{center}
+
+\vfill\vfill\vfill
+
+% Author and supervisor
+\begin{minipage}{0.45\textwidth}
+\begin{flushleft} %\large
+Vº. Bº. del Tutor:\\[2cm]
+D. José Francisco Díez Pastor
+\end{flushleft}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\begin{flushleft} %\large
+Vº. Bº. del Tutor:\\[2cm]
+D. Raúl Marticorena Sánchez
+\end{flushleft}
+\end{minipage}
+\hfill
+
+\vfill
+
+% para casos con solo un tutor comentar lo anterior
+% y descomentar lo siguiente
+%Vº. Bº. del Tutor:\\[2cm]
+%D. nombre tutor
+
+
+\newpage\null\thispagestyle{empty}\newpage
+
+
+
+
+\frontmatter
+
+% Abstract en castellano
+\renewcommand*\abstractname{Resumen}
+\begin{abstract}
+La actividad de vuelo de una colmena es un indicador importante sobre su
+estado de salud. Sin embargo, la monitorización manual de este parámetro
+es un proceso muy costoso y puede introducir una tasa de error elevada.
+Por ello, se han desarrollado diversos métodos que permiten automatizar
+este proceso.
+
+En este trabajo se propone un nuevo método más accesible al público
+general que permite la monitorización de la actividad de vuelo de una
+colmena mediante la cámara de un \emph{smartphone} Android.
+
+Además, se ha desarrollado una aplicación de gestión de colmenares que
+integra el algoritmo y proporciona las herramientas necesarias para
+interpretar y organizar toda la información recabada.
+
+GoBees es la aplicación resultante y se encuentra disponible a través de
+Google Play o de la página oficial del proyecto \url{http://gobees.io/}.
+\end{abstract}
+
+\renewcommand*\abstractname{Descriptores}
+\begin{abstract}
+Contador de abejas, actividad de vuelo, monitorización de colmenas, 
+gestión de colmenares, aplicación Android.
+\end{abstract}
+
+\clearpage
+
+% Abstract en inglés
+\renewcommand*\abstractname{Abstract}
+\begin{abstract}
+Flight activity of a honey bee colony is an overall indicator of the
+state of the hive's health. However, manually monitoring this parameter
+is a very expensive and time-consuming process and can introduce a high
+error rate. Thus, several methods to automate this process have been
+developed over the years.
+
+In this work, we propose a new method more accessible to the general
+public which allows monitoring the flight activity of a honey bee colony
+using the built-in camera of an Android smartphone.
+
+In addition, an apiary management application has been developed,
+incorporating the algorithm and providing the necessary tools to
+interpret and organize all the information gathered.
+
+GoBees is the resulting application and it is available on Google Play
+or the official web site \url{http://gobees.io/}.
+\end{abstract}
+
+\renewcommand*\abstractname{Keywords}
+\begin{abstract}
+Bee counter, flight activity, hive monitoring, apiary management, 
+Android application.
+\end{abstract}
+
+\clearpage
+
+% Indices
+\tableofcontents
+
+\clearpage
+
+\listoffigures
+
+\clearpage
+
+%\listoftables
+
+%\clearpage
+
+\mainmatter
+\include{./tex/1_Introduccion}
+\include{./tex/2_Objetivos_del_proyecto}
+\include{./tex/3_Conceptos_teoricos}
+\include{./tex/4_Tecnicas_y_herramientas}
+\include{./tex/5_Aspectos_relevantes_del_desarrollo_del_proyecto}
+\include{./tex/6_Trabajos_relacionados}
+\include{./tex/7_Conclusiones_Lineas_de_trabajo_futuras}
+
+
+\bibliography{bibliografia}
+\bibliographystyle{plainnat}
+
+\newenvironment{bottompar}{\par\vspace*{\fill}}{\clearpage}
+
+\begin{bottompar}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=2cm]{ccby}
+\end{figure}
+
+
+\begin{center}
+Este obra está bajo una licencia Creative Commons Reconocimiento 4.0 Internacional
+(\href{https://creativecommons.org/licenses/by/4.0/}{CC-BY-4.0}).
+\end{center}
+\end{bottompar}
+
+\end{document}

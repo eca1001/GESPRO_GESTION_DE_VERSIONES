@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ GoBees
+  ~ Copyright (c) 2016 - 2017 David Miguel Lozano
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
+  -->
+
+<resources>
+    <!-- https://www.materialpalette.com/amber/blue-grey -->
+    <color name="colorPrimary">#FFC107</color>
+    <color name="colorPrimaryDark">#FFA000</color>
+    <color name="colorAccent">#607D8B</color>
+    <color name="colorPrimaryLight">#FFECB3</color>
+    <color name="colorBackground">#DDE3E6</color>
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecondaryText">#757575</color>
+    <color name="colorIcons">#212121</color>
+    <color name="colorDivider">#BDBDBD</color>
+
+    <!-- Bees chart fade  -->
+    <color name="endColorChart">#ffd180</color>
+    <color name="startColorChart">#ffa000</color>
+
+    <!-- Temp chart -->
+    <color name="colorLineTempChart">#FFC107</color>
+    <color name="colorFillTempChart">#FFECB3</color>
+    <color name="colorTempIcon">#d50000</color>
+    <!-- Rain chart -->
+    <color name="colorLineRainChart">#2979ff</color>
+    <color name="colorFillRainChart">#bbdefb</color>
+    <color name="colorRainIcon">#01579b</color>
+    <!-- Wind chart -->
+    <color name="colorLineWindChart">#43a047</color>
+    <color name="colorFillWindChart">#b9f6ca</color>
+    <color name="colorWindIcon">#2196f3</color>
+
+    <!--- Camera -->
+    <color name="colorCameraControlsBg">#80000000</color>
+    <color name="colorCameraControlsIcons">#ffffff</color>
+    <color name="colorCameraSettingsBg">#80000000</color>
+    <color name="colorCameraSettingsFrameBg">#ffffff</color>
+    <color name="colorRecordIcon">#d50000</color>
+</resources>

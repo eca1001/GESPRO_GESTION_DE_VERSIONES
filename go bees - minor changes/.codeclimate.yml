@@ -1,0 +1,33 @@
+engines:
+  checkstyle: # https://docs.codeclimate.com/docs/checkstyle
+    enabled: true
+    channel: "beta"
+    checks:
+        com.puppycrawl.tools.checkstyle.checks.imports.CustomImportOrderCheck:
+            enabled: false
+  fixme: # https://docs.codeclimate.com/docs/fixme
+    enabled: true
+  markdownlint: # https://docs.codeclimate.com/docs/markdownlint
+    enabled: true
+    checks:
+        MD003:
+            enabled: false
+        MD009:
+            enabled: false
+        MD013:
+            enabled: false
+        MD022:
+            enabled: false
+  pmd: # https://docs.codeclimate.com/docs/pmd
+    enabled: true
+    channel: "beta"    
+    
+ratings:
+  paths:
+    - "**.java"
+    
+exclude_paths: 
+    - docs/latex/**
+    - docs/img/**
+    - gradle/**
+    - app/src/main/res/**

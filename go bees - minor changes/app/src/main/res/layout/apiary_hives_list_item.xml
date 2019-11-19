@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ GoBees
+  ~ Copyright (c) 2016 - 2017 David Miguel Lozano
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
+  -->
+
+<android.support.v7.widget.CardView
+    android:id="@+id/card"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="16dp"
+    android:foreground="?attr/selectableItemBackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/hive_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/hive_land"
+            app:riv_border_color="@android:color/black"
+            app:riv_border_width="0dp"
+            app:riv_corner_radius="50dp"
+            app:riv_oval="false"/>
+
+        <TextView
+            android:id="@+id/hive_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_toEndOf="@id/hive_image"
+            android:layout_toStartOf="@+id/more_icon"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:minHeight="52sp"
+            android:text="@string/default_hive_name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/colorPrimaryText"/>
+
+        <ImageView
+            android:id="@+id/more_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="16dp"
+            android:adjustViewBounds="false"
+            android:contentDescription="@string/more_icon"
+            android:src="@drawable/ic_more_vert"
+            android:tint="@color/colorIcons"/>
+
+        <ImageView
+            android:id="@+id/last_revision_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/hive_name"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/hive_image"
+            android:adjustViewBounds="false"
+            android:contentDescription="@string/last_revision_icon"
+            android:src="@drawable/ic_last_revision"
+            android:tint="@color/colorSecondaryText"/>
+
+        <TextView
+            android:id="@+id/last_revision"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@id/hive_name"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@id/last_revision_icon"
+            android:layout_toStartOf="@+id/enter_icon"
+            android:ellipsize="end"
+            android:gravity="bottom"
+            android:maxLines="1"
+            android:text="@string/default_last_revision"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/colorSecondaryText"/>
+
+        <ImageView
+            android:id="@+id/enter_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/hive_name"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:adjustViewBounds="false"
+            android:contentDescription="@string/enter_icon"
+            android:src="@drawable/ic_enter"
+            android:tint="@color/colorAccent"/>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
