@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ GoBees
+  ~ Copyright (c) 2016 - 2017 David Miguel Lozano
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
+  -->
+
+<FrameLayout
+    android:id="@+id/activity_camera"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:opencv="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context="com.davidmiguel.gobees.monitoring.MonitoringActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="false"
+            android:contentDescription="@string/gobees_logo"
+            android:src="@drawable/gobees_bee"/>
+
+        <TextView
+            android:id="@+id/monitoring_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/monitoring_text"
+            android:textAlignment="center"
+            android:textColor="@color/colorCameraControlsIcons"/>
+
+        <Chronometer
+            android:id="@+id/chronometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/colorCameraControlsIcons"
+            android:visibility="invisible"/>
+    </LinearLayout>
+
+
+    <com.davidmiguel.gobees.monitoring.camera.CameraView
+        android:id="@+id/camera_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="24dp"
+        opencv:camera_id="any"
+        opencv:show_fps="false"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="88dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/colorCameraControlsBg"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/settings_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:adjustViewBounds="false"
+                    android:contentDescription="@string/settings_icon"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_settings"
+                    android:tint="@color/colorCameraControlsIcons"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/record_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="88dp"
+                    android:adjustViewBounds="false"
+                    android:contentDescription="@string/start_record_icon"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_start_recording"
+                    android:tint="@color/colorCameraControlsIcons"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/num_bees"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/num_bees_default"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorCameraControlsIcons"
+                    android:textSize="20sp"
+                    android:visibility="gone"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</FrameLayout>

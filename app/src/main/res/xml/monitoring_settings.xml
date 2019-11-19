@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ GoBees
+  ~ Copyright (c) 2016 - 2017 David Miguel Lozano
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:key="@string/pref_bees_cat_key"
+        android:title="@string/pref_bees_cat_label">
+
+        <SwitchPreference
+            android:defaultValue="@string/pref_show_algo_output_default"
+            android:key="@string/pref_show_algo_output_key"
+            android:title="@string/pref_show_algo_output_label"/>
+
+        <ListPreference
+            android:defaultValue="@string/pref_blob_size_normal"
+            android:entries="@array/pref_blob_size_options"
+            android:entryValues="@array/pref_blob_size_values"
+            android:key="@string/pref_blob_size_key"
+            android:title="@string/pref_blob_size_label"/>
+
+        <com.vanniktech.vntnumberpickerpreference.VNTNumberPickerPreference
+            android:defaultValue="@integer/pref_min_area_default"
+            android:key="@string/pref_min_area_key"
+            android:title="@string/pref_min_area_label"
+            app:vnt_maxValue="@integer/pref_min_area_max"
+            app:vnt_minValue="@integer/pref_min_area_min"
+            app:vnt_setWrapSelectorWheel="true"/>
+
+        <com.vanniktech.vntnumberpickerpreference.VNTNumberPickerPreference
+            android:defaultValue="@integer/pref_max_area_default"
+            android:key="@string/pref_max_area_key"
+            android:title="@string/pref_max_area_label"
+            app:vnt_maxValue="@integer/pref_max_area_max"
+            app:vnt_minValue="@integer/pref_max_area_min"
+            app:vnt_setWrapSelectorWheel="true"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="@string/pref_camera_cat_key"
+        android:title="@string/pref_camera_cat_label">
+
+        <ListPreference
+            android:defaultValue="@string/pref_zoom_x1"
+            android:entries="@array/pref_zoom_options"
+            android:entryValues="@array/pref_zoom_values"
+            android:key="@string/pref_zoom_key"
+            android:title="@string/pref_zoom_label"/>
+
+        <ListPreference
+            android:defaultValue="@string/pref_frame_rate_1sec"
+            android:entries="@array/pref_frame_rate_options"
+            android:entryValues="@array/pref_frame_rate_values"
+            android:key="@string/pref_frame_rate_key"
+            android:title="@string/pref_frame_rate_label"/>
+
+    </PreferenceCategory>
+</PreferenceScreen>
