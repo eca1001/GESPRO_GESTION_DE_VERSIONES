@@ -16,19 +16,25 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
  */
 
-package com.davidmiguel.gobees.data.source.local;
+package com.davidmiguel.gobees;
 
-import android.support.annotation.NonNull;
+import com.davidmiguel.gobees.data.source.local.GoBeesDbConfig;
 
-import io.realm.DynamicRealm;
-import io.realm.RealmMigration;
+import io.realm.Realm;
 
 /**
- * Defines schema changes between db versions.
+ * Deletes all date whenever the app is restarted.
  */
-class GoBeesDbMigration implements RealmMigration {
+public class App extends BaseApp {
+
     @Override
-    public void migrate(@NonNull DynamicRealm realm, long oldVersion, long newVersion) {
-        // No schema changes so far
+    protected void initRealm() {
+        // Initialize Realm. Should only be done once when the application starts.
+        Realm.init(this);
+        GoBeesDbConfig realmConfig = new GoBeesDbConfig();
+        // Delete all
+        Realm.deleteRealm(realmConfig.getRealmConfiguration());
+        // Set config
+        Realm.setDefaultConfiguration(realmConfig.getRealmConfiguration());
     }
 }
